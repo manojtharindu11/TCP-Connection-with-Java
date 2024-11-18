@@ -1,3 +1,5 @@
+package basic;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,12 +13,12 @@ public class Server {
 
         // Create a server socket listening on port 8080
         ServerSocket serverSocket = new ServerSocket(8080);
-        System.out.println("Server is listening on port 8080");
+        System.out.println("basic.Server is listening on port 8080");
 
 
         // Accept a client connection
         Socket clientSocket = serverSocket.accept();
-        System.out.println("Client connected!");
+        System.out.println("basic.Client connected!");
         // Communicate with the client
 
 
@@ -26,11 +28,11 @@ public class Server {
 
 
         String message = in.readLine();
-        System.out.println("Client says: " + message);
+        System.out.println("basic.Client says: " + message);
 
 
         // Send a response to the client
-        out.println("Hello, Client!");
+        out.println("Hello, basic.Client!");
 
 
         // Close the connection

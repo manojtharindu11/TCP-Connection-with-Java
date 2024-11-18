@@ -1,3 +1,5 @@
+package basic;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,7 +20,7 @@ public class Client {
 
         String response = in.readLine();
 
-        System.out.println("Client.Server response : " + response);
+        System.out.println("basic.Server response : " + response);
 
         // Close the connection
         socket.close();
