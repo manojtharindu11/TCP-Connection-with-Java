@@ -4,21 +4,24 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class SingleTreadedEchoServer {
+public class ThreadPoolEchoServerSize2 {
     public static void main(String[] args) {
         int port = 8080;
+        int numberOfThreads = 2;
+        ExecutorService threadPool = Executors.newFixedThreadPool(numberOfThreads);
 
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Single threaded server listening on port " + port);
+        try (ServerSocket serverSocket = new ServerSocket((port));) {
+            System.out.println("Thread pool server (2 threads) starting on part: " + port);
 
             while (true) {
                 Socket socket = serverSocket.accept();
-                handleClient(socket);
+                threadPool.execute(() -> handleClient(socket));
             }
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
@@ -39,7 +42,4 @@ public class SingleTreadedEchoServer {
             }
         }
     }
-
-
 }
-
